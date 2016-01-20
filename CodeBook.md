@@ -14,35 +14,33 @@ The file **run_analysis.R** does the following (as described in the source code)
 
 	* cbind() separately the test and training data sets
 	
-	---
 
-		**Test data set**
-		Load the three files and check dimentions
+	**Test data set**
+	Load the three files and check dimentions
+	
+		```R
+		testSubject = read.table("test/subject_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
+		dim(testSubject)
+		#[1] 2947 1
+		testFeatures = read.table("test/X_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
+		dim(testFeatures)
+		#[1] 2947 561
+		testActivity = read.table("test/y_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
+		dim(testActivity)
+		#[1] 2947 1
+		```
+
+	Cbind the 563 columns in the order testSubject - testActivity - testFeatures
 		
-			```R
-			testSubject = read.table("test/subject_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
-			dim(testSubject)
-			#[1] 2947 1
-			testFeatures = read.table("test/X_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
-			dim(testFeatures)
-			#[1] 2947 561
-			testActivity = read.table("test/y_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
-			dim(testActivity)
-			#[1] 2947 1
-			```
+		```R
+		testTable = cbind(testSubject,testActivity,testFeatures)
+		#Check that have the desired dimentions
+		dim(testTable)
+		#[1] 2947 563 
+		```
 
-		Cbind the 563 columns in the order testSubject - testActivity - testFeatures
-			
-			```R
-			testTable = cbind(testSubject,testActivity,testFeatures)
-			#Check that have the desired dimentions
-			dim(testTable)
-			#[1] 2947 563 
-			```
-
-	---
-
-		Do the same for the train data set. 
+	Do the same for the train data set. 
+	
 	* Now rbind() the set and train data sets
 
 		```R 
@@ -98,6 +96,7 @@ The file **run_analysis.R** does the following (as described in the source code)
 		```
 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+	
 	Remove unwanted characters in the column names:
 		
 		```R
@@ -108,7 +107,7 @@ The file **run_analysis.R** does the following (as described in the source code)
 		#- The "()"
 		names(filterDS) <- gsub("\\(\\)","",names(filterDS))
 		```
-
+		
 	Use a data frame to use the dplyr library
 		
 		```R
