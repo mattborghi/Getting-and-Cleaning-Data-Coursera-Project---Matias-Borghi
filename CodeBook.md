@@ -99,21 +99,21 @@ The file **run_analysis.R** does the following (as described in the source code)
 	
 	Remove unwanted characters in the column names:
 		
-		```R
-		#- The space
-		names(filterDS) <- gsub(" ","",names(filterDS))
-		#- The "-"
-		names(filterDS) <- gsub("-","",names(filterDS))
-		#- The "()"
-		names(filterDS) <- gsub("\\(\\)","",names(filterDS))
-		```
+	```R
+	#- The space
+	names(filterDS) <- gsub(" ","",names(filterDS))
+	#- The "-"
+	names(filterDS) <- gsub("-","",names(filterDS))
+	#- The "()"
+	names(filterDS) <- gsub("\\(\\)","",names(filterDS))
+	```
 		
 	Use a data frame to use the dplyr library
 		
-		```R
-		mergedDF = as.data.frame.matrix(filterDS) 
-		suppressPackageStartupMessages(library(dplyr))
-		```
+	```R
+	mergedDF = as.data.frame.matrix(filterDS) 
+	suppressPackageStartupMessages(library(dplyr))
+	```
 
 	* Using the pipeline operator and the *summarise_each()* function to compute the mean for all the columns. Finally, save the data.
 		
