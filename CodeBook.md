@@ -18,26 +18,26 @@ The file **run_analysis.R** does the following (as described in the source code)
 	**Test data set**
 	Load the three files and check dimentions
 	
-		```R
-		testSubject = read.table("test/subject_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
-		dim(testSubject)
-		#[1] 2947 1
-		testFeatures = read.table("test/X_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
-		dim(testFeatures)
-		#[1] 2947 561
-		testActivity = read.table("test/y_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
-		dim(testActivity)
-		#[1] 2947 1
-		```
+	```R
+	testSubject = read.table("test/subject_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
+	dim(testSubject)
+	#[1] 2947 1
+	testFeatures = read.table("test/X_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
+	dim(testFeatures)
+	#[1] 2947 561
+	testActivity = read.table("test/y_test.txt",header=FALSE,sep="",stringsAsFactors=FALSE)
+	dim(testActivity)
+	#[1] 2947 1
+	```
 
 	Cbind the 563 columns in the order testSubject - testActivity - testFeatures
 		
-		```R
-		testTable = cbind(testSubject,testActivity,testFeatures)
-		#Check that have the desired dimentions
-		dim(testTable)
-		#[1] 2947 563 
-		```
+	```R
+	testTable = cbind(testSubject,testActivity,testFeatures)
+	#Check that have the desired dimentions
+	dim(testTable)
+	#[1] 2947 563 
+	```
 
 	Do the same for the train data set. 
 	
